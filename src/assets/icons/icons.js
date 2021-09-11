@@ -86,7 +86,8 @@ import {
   cilGraph,
   cilLocationPin,
   cilCash,
-  cilNotes
+  cilNotes,
+  cilPrint
 
 } from '@coreui/icons'
 import { logo } from './logo'
@@ -148,7 +149,8 @@ export const iconsSet = Object.assign(
     cilGraph,
     cilBan,
     cilCash,
-    cilNotes
+    cilNotes,
+    cilPrint
   
   },
   {

@@ -13,7 +13,7 @@ Vue.use(CoreuiVue)
 Vue.prototype.$log = console.log.bind(console)
 Vue.use(VueGoogleMaps, {
   load: {
-    key: "Google_key",
+    key: "GOOGLE_MAPS_KEY",
     libraries: "places",
   },
 });
