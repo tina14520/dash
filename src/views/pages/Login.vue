@@ -26,15 +26,15 @@
                     <CCol col="6" class="text-left">
                       <CButton color="primary" class="px-4">Login</CButton>
                     </CCol>
-                    <CCol col="6" class="text-right">
+                    <!-- <CCol col="6" class="text-right">
                       <CButton color="link" class="px-0">Forgot password?</CButton>
                       <CButton color="link" class="d-lg-none">Register now!</CButton>
-                    </CCol>
+                    </CCol> -->
                   </CRow>
                 </CForm>
               </CCardBody>
             </CCard>
-            <CCard
+            <!-- <CCard
               color="primary"
               text-color="white"
               class="text-center py-5 d-md-down-none"
@@ -51,7 +51,7 @@
                   Register Now!
                 </CButton>
               </CCardBody>
-            </CCard>
+            </CCard> -->
           </CCardGroup>
         </CCol>
       </CRow>

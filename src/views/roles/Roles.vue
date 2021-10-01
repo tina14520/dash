@@ -1,6 +1,7 @@
 <template>
-  <div>
-    <CRow>
+<h1>Admin Role</h1>
+  <!-- <div> -->
+    <!-- <CRow>
       <CCol sm="6" lg="3">
         <CWidgetProgress footer="Lorem ipsum dolor sit amet enim.">
           <div class="h4 m-0">89.9%</div>
@@ -216,7 +217,7 @@
         </CWidgetIcon>
       </CCol>
     </CRow>
-    <!-- <CRow>
+     <CRow>
       <CCol col="12" sm="6" lg="4">
         <CWidgetIcon
           header="$1.999,50"
@@ -250,7 +251,7 @@
           <CIcon name="cil-moon" class="mx-5" width="24"/>
         </CWidgetIcon>
       </CCol>
-    </CRow> -->
+    </CRow> 
     <WidgetsBrand noCharts/>
     <WidgetsBrand/>
     <CCardGroup class="mb-4">
@@ -482,21 +483,21 @@
         </CWidgetSimple>
       </CCol>
     </CRow>
-  </div>
+  </div> -->
 </template>
 
 <script>
-import WidgetsBrand from './WidgetsBrand'
-import WidgetsDropdown from './WidgetsDropdown'
-import { CChartLineSimple, CChartBarSimple } from '../Attendance/index.js'
+// import WidgetsBrand from './WidgetsBrand'
+// import WidgetsDropdown from './WidgetsDropdown'
+// import { CChartLineSimple, CChartBarSimple } from '../Attendance/index.js'
 
-export default {
-  name: 'Widgets',
-  components: {
-    CChartLineSimple,
-    CChartBarSimple,
-    WidgetsBrand,
-    WidgetsDropdown
-  }
-}
+// export default {
+//   name: 'Widgets',
+//   components: {
+//     CChartLineSimple,
+//     CChartBarSimple,
+//     WidgetsBrand,
+//     WidgetsDropdown
+//   }
+// }
 </script>

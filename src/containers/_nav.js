@@ -101,6 +101,12 @@ export default [
           // }
         ]
       },
+      {
+        _name: 'CSidebarNavItem',
+         name: 'Roles',
+         to: '/roles',
+         icon: 'cil-list'
+       },
     ]
   }
 ]

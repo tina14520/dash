@@ -9,7 +9,7 @@ const Dashboard = () => import('@/views/Dashboard')
 
 const Attendance = () => import('@/views/Attendance/Attendance')
 const Settings=()=> import('@/views/settings/Settings')
-const Widgets = () => import('@/views/widgets/Widgets')
+const Roles = () => import('@/views/roles/Roles')
 
 // Views - taxi Booking
 const TripBooking = () => import('@/views/taxiBooking/TripBooking')
@@ -82,9 +82,9 @@ function configRoutes () {
           component: Attendance
         },
         {
-          path: 'widgets',
-          name: 'Widgets',
-          component: Widgets
+          path: 'roles',
+          name: 'Roles',
+          component: Roles
         },
         {
           path: 'settings',
@@ -177,11 +177,6 @@ function configRoutes () {
           ]
         }
       ]
-    },
-    {
-      path: 'settings',
-      name: 'Settings',
-      component: Settings
     },
     {
       path: '/pages',
