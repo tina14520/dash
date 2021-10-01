@@ -19,7 +19,7 @@ export default [
         icon: 'cil-taxi',
         items: [
           {
-            name: 'Trip booking',
+            name: 'Trip Booking',
             to: '/taxiBooking/trip-booking'
           },
           {
