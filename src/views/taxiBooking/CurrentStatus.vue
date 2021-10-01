@@ -1,5 +1,5 @@
 <template>
-  <CRow>
+  <!-- <CRow>
     <CCol col="12">
       <CCard>
         <CCardHeader>
@@ -189,7 +189,8 @@
         </CCardBody>
       </CCard>
     </CCol>
-  </CRow>
+  </CRow> -->
+  <h1> Current Status</h1>
 </template>
 <script>
 export default {

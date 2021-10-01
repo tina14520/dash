@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <!-- <div>
     <CCard>
       <CCardHeader>
         <CIcon name="cil-basket"/>Brand icons
@@ -20,13 +20,14 @@
         </CRow>
       </CCardBody>
     </CCard>
-  </div>
+  </div> -->
+  <h1>Booking Reports</h1>
 </template>
 
 <script>
 import { brandSet as brands } from '@coreui/icons'
 export default {
-  name: 'Brands',
+  name: 'BookingReports',
   brands,
   methods: {
     toKebabCase (str) {

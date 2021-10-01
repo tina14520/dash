@@ -15,42 +15,42 @@ export default [
       {
         _name: 'CSidebarNavDropdown',
         name: 'Taxi Booking',
-        route: '/buttons',
+        route: '/taxiBooking',
         icon: 'cil-taxi',
         items: [
           {
-            name: 'Trips booking',
-            to: '/buttons/standard-buttons'
+            name: 'Trip booking',
+            to: '/taxiBooking/trip-booking'
           },
           {
             name: 'Trips Tracking',
-            to: '/buttons/dropdowns'
+            to: '/taxiBooking/trips-tracking'
           },
           {
-            name: 'Current status',
-            to: '/buttons/button-groups'
+            name: 'Current Status',
+            to: '/taxiBooking/current-status'
           },
           {
             name: 'Follow-up',
-            to: '/buttons/brand-buttons'
+            to: '/taxiBooking/follow-up'
           }
         ]
       },
       {
         _name: 'CSidebarNavItem',
         name: 'Attendance / Break ',
-        to: '/charts',
+        to: '/attendance&break',
         icon: 'cil-address-book'
       },
       {
         _name: 'CSidebarNavDropdown',
         name: 'Reports',
-        route: '/icons',
+        route: '/reports',
         icon: 'cil-notes',
         items: [
           {
             name: 'Trips Report',
-            to: '/icons/coreui-icons',
+            to: '/reports/trips-reports',
             // badge: {
             //   color: 'info',
             //   text: 'NEW'
@@ -58,19 +58,19 @@ export default [
           },
           {
             name: 'Booking Report',
-            to: '/icons/brands'
+            to: '/reports/booking-reports'
           },
           {
             name: 'Cancelled Trips',
-            to: '/icons/flags'
+            to: '/reports/cancelled-trips'
           },
           {
             name: 'Financial Reports',
-            to: '/icons/flags'
+            to: '/reports/financial-reports'
           },
           {
             name: 'Top Customers',
-            to: '/icons/flags'
+            to: '/reports/top-customers'
           },
           
         ]
@@ -78,7 +78,7 @@ export default [
       {
        _name: 'CSidebarNavItem',
         name: 'Settings',
-        route: '/notifications',
+        to: '/settings',
         icon: 'cil-settings'
       },
       {
@@ -93,7 +93,7 @@ export default [
           },
           {
             name: 'Customers',
-            to: '/users/users'
+            to: '/users/customers'
           },
           // {
           //   name: 'Modals',
@@ -101,65 +101,6 @@ export default [
           // }
         ]
       },
-      // {
-      //   _name: 'CSidebarNavItem',
-      //   name: 'Widgets',
-      //   to: '/widgets',
-      //   icon: 'cil-calculator',
-      //   badge: {
-      //     color: 'primary',
-      //     text: 'NEW',
-      //     shape: 'pill'
-      //   }
-      // },
-      // {
-      //   _name: 'CSidebarNavDivider',
-      //   _class: 'm-2'
-      // },
-      // {
-      //   _name: 'CSidebarNavTitle',
-      //   _children: ['Extras']
-      // },
-      // {
-      //   _name: 'CSidebarNavDropdown',
-      //   name: 'Pages',
-      //   route: '/pages',
-      //   icon: 'cil-star',
-      //   items: [
-      //     {
-      //       name: 'Login',
-      //       to: '/pages/login'
-      //     },
-      //     {
-      //       name: 'Register',
-      //       to: '/pages/register'
-      //     },
-      //     {
-      //       name: 'Error 404',
-      //       to: '/pages/404'
-      //     },
-      //     {
-      //       name: 'Error 500',
-      //       to: '/pages/500'
-      //     }
-      //   ]
-      // },
-      // {
-      //   _name: 'CSidebarNavItem',
-      //   name: 'Download CoreUI',
-      //   href: 'http://coreui.io/vue/',
-      //   icon: { name: 'cil-cloud-download', class: 'text-white' },
-      //   _class: 'bg-success text-white',
-      //   target: '_blank'
-      // },
-      // {
-      //   _name: 'CSidebarNavItem',
-      //   name: 'Try CoreUI PRO',
-      //   href: 'http://coreui.io/pro/vue/',
-      //   icon: { name: 'cil-layers', class: 'text-white' },
-      //   _class: 'bg-danger text-white',
-      //   target: '_blank'
-      // }
     ]
   }
 ]

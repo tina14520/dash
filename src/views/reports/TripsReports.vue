@@ -1,6 +1,6 @@
 
 <template>
-  <div>
+  <!-- <div>
     <CCard>
       <CCardHeader>
         <CIcon :content="$options.freeSet.cilHandPointDown"/>
@@ -33,13 +33,14 @@
         </CRow>
       </CCardBody>
     </CCard>
-  </div>
+  </div> -->
+  <h1>Trips Reports</h1>
 </template>
 
 <script>
 import { freeSet } from '@coreui/icons'
 export default {
-  name: 'CoreUIIcons',
+  name: 'Trips Reports',
   freeSet,
   methods: {
     toKebabCase (str) {

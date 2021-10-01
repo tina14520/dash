@@ -1,9 +1,9 @@
 <template>
   <CRow>
-    <CCol col="12" xl="8">
+    <CCol>
       <CCard>
         <CCardHeader>
-          Users
+          Customers
         </CCardHeader>
         <CCardBody>
           <CDataTable
@@ -35,7 +35,7 @@
 <script>
 import usersData from './UsersData'
 export default {
-  name: 'Users',
+  name: 'Cutomers',
   data () {
     return {
       items: usersData,

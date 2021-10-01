@@ -29,18 +29,19 @@
       </CCol>
     </CRow>
     <CCardBody class="tab">
-      <div class="c">
-      <div class="col-sm-6 form-inline p-0">
-        <Datepicker :range="true" lang="en" firstDayOfWeek="sunday"  /> 
-      </div>
-      <div class="cd col-sm-6 form-inline p-0">
-        <CButton class="btn d-sm-down-none btn-success" variant="outline" square size="sm">
-          <!-- <CIcon name="cil-print" /> -->
-          <a download="coreui-table-data.csv" rel="noonpener"
-            href="data:text/csv;charset=utf-8,SEP=,%0ASamppa%20Nori%2C2012%2F01%2F01%2CMember%2CActive%0AEstavan%20Lykos%2C2012%2F02%2F01%2CStaff%2CBanned%0AChetan%20Mohamed%2C2012%2F02%2F01%2CAdmin%2CInactive%0ADerick%20Maximinus%2C2012%2F03%2F01%2CMember%2CPending%0AFriderik%20D%C3%A1vid%2C2012%2F01%2F21%2CStaff%2CActive%0AYiorgos%20Avraamu%2C2012%2F01%2F01%2CMember%2CActive%0AAvram%20Tarasios%2C2012%2F02%2F01%2CStaff%2CBanned%2Ctable-success%0AQuintin%20Ed%2C2012%2F02%2F01%2CAdmin%2CInactive%0AEn%C3%A9as%20Kwadwo%2C2012%2F03%2F01%2CMember%2CPending%0AAgapetus%20Tade%C3%A1%C5%A1%2C2012%2F01%2F21%2CStaff%2CActive%0ACarwyn%20Fachtna%2C2012%2F01%2F01%2CMember%2CActive%2Ctable-success%0ANehemiah%20Tatius%2C2012%2F02%2F01%2CStaff%2CBanned%0AEbbe%20Gemariah%2C2012%2F02%2F01%2CAdmin%2CInactive%0AEustorgios%20Amulius%2C2012%2F03%2F01%2CMember%2CPending%0ALeopold%20G%C3%A1sp%C3%A1r%2C2012%2F01%2F21%2CStaff%2CActive%0APompeius%20Ren%C3%A9%2C2012%2F01%2F01%2CMember%2CActive%0APa%C4%89jo%20Jadon%2C2012%2F02%2F01%2CStaff%2CBanned%0AMicheal%20Mercurius%2C2012%2F02%2F01%2CAdmin%2CInactive%0AGanesha%20Dubhghall%2C2012%2F03%2F01%2CMember%2CPending%0AHiroto%20%C5%A0imun%2C2012%2F01%2F21%2CStaff%2CActive%0AVishnu%20Serghei%2C2012%2F01%2F01%2CMember%2CActive%0AZbyn%C4%9Bk%20Phoibos%2C2012%2F02%2F01%2CStaff%2CBanned%0AEinar%20Randall%2C2012%2F02%2F01%2CAdmin%2CInactive%2Ctable-danger%0AF%C3%A9lix%20Troels%2C2012%2F03%2F21%2CStaff%2CActive%0AAulus%20Agmundr%2C2012%2F01%2F01%2CMember%2CPending"
-            targrt="_blank"><CIcon color="white" name="cil-print" /> </a>
-        </CButton>
-      </div>
+      <div class="cdiv">
+        <div class="col-sm-6 form-inline p-0">
+          <Datepicker :range="true" lang="en" firstDayOfWeek="sunday" />
+        </div>
+        <div class="cd col-sm-6 form-inline p-0">
+          <CButton class="btn d-sm-down-none btn-success" variant="outline" square size="sm">
+            <!-- <CIcon name="cil-print" /> -->
+            <a download="coreui-table-data.csv" rel="noonpener"
+              href="data:text/csv;charset=utf-8,SEP=,%0ASamppa%20Nori%2C2012%2F01%2F01%2CMember%2CActive%0AEstavan%20Lykos%2C2012%2F02%2F01%2CStaff%2CBanned%0AChetan%20Mohamed%2C2012%2F02%2F01%2CAdmin%2CInactive%0ADerick%20Maximinus%2C2012%2F03%2F01%2CMember%2CPending%0AFriderik%20D%C3%A1vid%2C2012%2F01%2F21%2CStaff%2CActive%0AYiorgos%20Avraamu%2C2012%2F01%2F01%2CMember%2CActive%0AAvram%20Tarasios%2C2012%2F02%2F01%2CStaff%2CBanned%2Ctable-success%0AQuintin%20Ed%2C2012%2F02%2F01%2CAdmin%2CInactive%0AEn%C3%A9as%20Kwadwo%2C2012%2F03%2F01%2CMember%2CPending%0AAgapetus%20Tade%C3%A1%C5%A1%2C2012%2F01%2F21%2CStaff%2CActive%0ACarwyn%20Fachtna%2C2012%2F01%2F01%2CMember%2CActive%2Ctable-success%0ANehemiah%20Tatius%2C2012%2F02%2F01%2CStaff%2CBanned%0AEbbe%20Gemariah%2C2012%2F02%2F01%2CAdmin%2CInactive%0AEustorgios%20Amulius%2C2012%2F03%2F01%2CMember%2CPending%0ALeopold%20G%C3%A1sp%C3%A1r%2C2012%2F01%2F21%2CStaff%2CActive%0APompeius%20Ren%C3%A9%2C2012%2F01%2F01%2CMember%2CActive%0APa%C4%89jo%20Jadon%2C2012%2F02%2F01%2CStaff%2CBanned%0AMicheal%20Mercurius%2C2012%2F02%2F01%2CAdmin%2CInactive%0AGanesha%20Dubhghall%2C2012%2F03%2F01%2CMember%2CPending%0AHiroto%20%C5%A0imun%2C2012%2F01%2F21%2CStaff%2CActive%0AVishnu%20Serghei%2C2012%2F01%2F01%2CMember%2CActive%0AZbyn%C4%9Bk%20Phoibos%2C2012%2F02%2F01%2CStaff%2CBanned%0AEinar%20Randall%2C2012%2F02%2F01%2CAdmin%2CInactive%2Ctable-danger%0AF%C3%A9lix%20Troels%2C2012%2F03%2F21%2CStaff%2CActive%0AAulus%20Agmundr%2C2012%2F01%2F01%2CMember%2CPending"
+              targrt="_blank">
+              <CIcon color="white" name="cil-print" /> </a>
+          </CButton>
+        </div>
       </div>
       <CDataTable :items="items" :fields="fields" column-filter table-filter items-per-page-select :items-per-page="5"
         striped border small fixed hover sorter pagination>
@@ -400,15 +401,17 @@
     background-color: white;
   }
 
-  .c{
- display: ruby;
+  .cdiv {
+    display: flex;
 
-}
-.c-icon{
-  color: white;
-}
-.cd{
-  display: flex;
-justify-content: flex-end
-}
+  }
+
+  .c-icon {
+    color: white;
+  }
+
+  .cd {
+    display: flex;
+    justify-content: flex-end
+  }
 </style>

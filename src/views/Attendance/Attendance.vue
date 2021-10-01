@@ -1,5 +1,6 @@
 <template>
-  <div>
+<h1>Attendance & Break</h1>
+  <!-- <div>
     <CCardGroup columns class="card-columns cols-2">
       <CCard>
         <CCardHeader>
@@ -13,7 +14,7 @@
             >
               <small class="text-muted">docs</small>
             </a>
-          </div>
+          </div> 
         </CCardHeader>
         <CCardBody>
           <CChartLineExample/>
@@ -54,15 +55,15 @@
         <CCardBody><CChartBarSimple background-color="danger"/></CCardBody>        
       </CCard>
     </CCardGroup>
-  </div>
+  </div> -->
 </template>
 
 <script>
-import * as Charts from './index.js'
+import * as Attendance from './index.js'
 export default {
-  name: 'Charts',
+  name: 'Attendance',
   components: {
-    ...Charts
+    ...Attendance
   }
 }
 </script>
