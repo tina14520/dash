@@ -1,18 +1,5 @@
 <template>
   <div>
-     <!-- <CRow>
-      <CCol sm="12">
-        <CTableWrapper
-          :items="getShuffledUsersData()"
-          hover
-          striped
-          border
-          small
-          fixed
-          caption="Combined All Table"
-        />
-      </CCol>
-    </CRow> -->
     <CRow>
       <CCol  md="12" class="td">
         <CCard>
@@ -141,10 +128,6 @@ export default {
       }
       return array
     },
-
-    getShuffledUsersData () {
-      return this.shuffleArray(usersData.slice(0))
-    }
   }
 }
 </script>
