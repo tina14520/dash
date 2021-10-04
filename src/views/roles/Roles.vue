@@ -41,6 +41,11 @@
               >
                 <input type="checkbox" id="checkbox" v-model="checked">
               </td>
+              <td
+                slot="roles"
+              >
+                <input type="checkbox" id="checkbox" v-model="checked">
+              </td>
             </CDataTable>
           </CCardBody>
         </CCard>
@@ -51,11 +56,8 @@
 
 <script>
 
-// import CTableWrapper from '../base/Table.vue'
 export default {
   name: 'Dashboard',
-    // components: { CTableWrapper },
-
   data () {
     return {
       tableItems: [
@@ -73,34 +75,21 @@ export default {
         }
       ],
       tableFields: [
-        { key: 'AdminType', label: 'Admin Type', _classes: 'text-center' },
-        // { key: 'country', _classes: 'text-center' },
-        { key:'taxi booking'},
+        { key: 'AdminType', label: 'Admin Type'},
+        { key:'taxi booking' },
         { key:"reports"},
         { key:"users"},
-        {key:"settings"},
-        { key:"attendens / break"}
-        // { key: 'usage' },
-        // { key: 'payment', label: 'Payment method', _classes: 'text-center' },
-        // { key: 'activity' },
+        { key:"settings"},
+        { key:"attendens / break"},
+        { key:"roles" }
       ]
     }
   },
   methods: {
     function(e) {
   if (
-    // no bubbling, should always fire.
-    // this is just a safety net in case event.timeStamp is unreliable in
-    // certain weird environments...
     e.target === e.currentTarget ||
-    // event is fired after handler attachment
-    // bail for environments that have buggy event.timeStamp implementations
-    // #9462 iOS 9 bug: event.timeStamp is 0 after history.pushState
-    // #9681 QtWebEngine event.timeStamp is negative value
     e.timeStamp <= 0 ||
-    // #9448 bail if event is fired in another document in a multi-page
-    // electron/nw.js app, since event.timeStamp will be using a different
-    // starting reference
     e.target.ownerDocument !== document
   ) {
     return this.checked.apply(this, arguments)
@@ -129,6 +118,7 @@ export default {
       return array
     },
   }
+    
 }
 </script>
 <style scoped>
