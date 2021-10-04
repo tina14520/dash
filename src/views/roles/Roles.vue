@@ -1,503 +1,199 @@
 <template>
-<h1>Admin Role</h1>
-  <!-- <div> -->
-    <!-- <CRow>
-      <CCol sm="6" lg="3">
-        <CWidgetProgress footer="Lorem ipsum dolor sit amet enim.">
-          <div class="h4 m-0">89.9%</div>
-          <div class="card-header-actions">
-            <a 
-              href="https://coreui.io/vue/docs/components/widgets" 
-              class="card-header-action position-absolute"
-              style="right:5px; top:5px"
-              rel="noreferrer noopener" 
-              target="_blank"
+  <div>
+     <!-- <CRow>
+      <CCol sm="12">
+        <CTableWrapper
+          :items="getShuffledUsersData()"
+          hover
+          striped
+          border
+          small
+          fixed
+          caption="Combined All Table"
+        />
+      </CCol>
+    </CRow> -->
+    <CRow>
+      <CCol  md="12" class="td">
+        <CCard>
+          <CCardBody>
+            <CDataTable
+              class="mb-0 table-outline"
+              hover
+              :items="tableItems"
+              :fields="tableFields"
+              head-color="black"
+              no-sorting
             >
-              <small class="text-muted">docs</small>
-            </a>
-          </div>
-          <div>Lorem ipsum...</div>
-          <CProgress
-            color="gradient-success"
-            :value="25"
-            class="progress-xs my-3 mb-0"
-          />
-        </CWidgetProgress>
-      </CCol>
-      <CCol sm="6" lg="3">
-        <CWidgetProgress
-          header="12.124"
-          text="Lorem ipsum..."
-          footer="Lorem ipsum dolor sit amet enim."
-          color="gradient-info"
-          :value="25"
-        />
-      </CCol>
-      <CCol sm="6" lg="3">
-        <CWidgetProgress
-          header="$98.111,00"
-          text="Lorem ipsum..."
-          footer="Lorem ipsum dolor sit amet enim."
-          color="gradient-warning"
-          :value="25"
-        />
-      </CCol>
-      <CCol sm="6" lg="3">
-        <CWidgetProgress
-          header="2 TB"
-          text="Lorem ipsum..."
-          footer="Lorem ipsum dolor sit amet enim."
-          color="gradient-danger"
-          :value="25"
-        />
-      </CCol>
-    </CRow>
-    <CRow>
-      <CCol sm="6" lg="3">
-        <CWidgetProgress
-          header="89.9%"
-          text="Lorem ipsum..."
-          footer="Lorem ipsum dolor sit amet enim."
-          color="gradient-success"
-          inverse :value="25"
-        />
-      </CCol>
-      <CCol sm="6" lg="3">
-        <CWidgetProgress
-          header="12.124"
-          text="Lorem ipsum..."
-          footer="Lorem ipsum dolor sit amet enim."
-          color="gradient-info"
-          inverse
-          :value="25"
-        />
-      </CCol>
-      <CCol sm="6" lg="3">
-        <CWidgetProgress
-          header="$98.111,00"
-          text="Lorem ipsum..."
-          footer="Lorem ipsum dolor sit amet enim."
-          color="gradient-warning"
-          inverse
-          :value="25"
-        />
-      </CCol>
-      <CCol sm="6" lg="3">
-        <CWidgetProgress
-          header="2 TB"
-          text="Lorem ipsum..."
-          footer="Lorem ipsum dolor sit amet enim."
-          color="gradient-danger"
-          inverse
-          :value="25"
-        />
-      </CCol>
-    </CRow>
-    <CRow>
-      <CCol col="12" sm="6" lg="3">
-        <CWidgetIcon
-          header="$1.999,50"
-          text="Income"
-          color="gradient-primary"
-        >
-          <CIcon name="cil-settings" width="24"/>
-        </CWidgetIcon>
-      </CCol>
-      <CCol col="12" sm="6" lg="3">
-        <CWidgetIcon
-          header="$1.999,50"
-          text="Income"
-          color="gradient-info"
-        >
-          <CIcon name="cil-laptop" width="24"/>
-        </CWidgetIcon>
-      </CCol>
-      <CCol col="12" sm="6" lg="3">
-        <CWidgetIcon
-          header="$1.999,50"
-          text="Income"
-          color="gradient-warning"
-        >
-          <CIcon name="cil-moon" width="24"/>
-        </CWidgetIcon>
-      </CCol>
-      <CCol col="12" sm="6" lg="3">
-        <CWidgetIcon
-          header="$1.999,50"
-          text="Income"
-          color="gradient-danger"
-        >
-          <CIcon name="cil-bell" width="24"/>
-        </CWidgetIcon>
-      </CCol>
-    </CRow>
-    <CRow>
-      <CCol col="12" sm="6" lg="3">
-        <CWidgetIcon
-          header="$1.999,50"
-          text="Income"
-          color="gradient-primary"
-          :icon-padding="false"
-        >
-          <CIcon name="cil-settings" width="24"/>
-        </CWidgetIcon>
-      </CCol>
-      <CCol col="12" sm="6" lg="3">
-        <CWidgetIcon
-          header="$1.999,50"
-          text="Income"
-          color="gradient-info"
-          :icon-padding="false"
-        >
-          <CIcon name="cil-laptop" width="24"/>
-        </CWidgetIcon>
-      </CCol>
-      <CCol col="12" sm="6" lg="3">
-        <CWidgetIcon
-          header="$1.999,50"
-          text="Income"
-          color="gradient-warning"
-          :icon-padding="false"
-        >
-          <CIcon name="cil-moon" width="24"/>
-        </CWidgetIcon>
-      </CCol>
-      <CCol col="12" sm="6" lg="3">
-        <CWidgetIcon
-          header="$1.999,50"
-          text="Income"
-          color="gradient-danger"
-          :icon-padding="false"
-        >
-          <CIcon name="cil-bell" width="24"/>
-        </CWidgetIcon>
-      </CCol>
-    </CRow>
-    <CRow>
-      <CCol col="12" sm="6" lg="4">
-        <CWidgetIcon
-          header="$1.999,50"
-          text="Income"
-          color="gradient-primary"
-          :icon-padding="false"
-        >
-          <CIcon name="cil-settings" class="mx-5 " width="24"/>
-        </CWidgetIcon>
-      </CCol>
-      <CCol col="12" sm="6" lg="4">
-        <CWidgetIcon
-          header="$1.999,50"
-          text="Income"
-          color="gradient-info"
-          :icon-padding="false"
-        >
-          <CIcon name="cil-laptop" class="mx-5 " width="24"/>
-        </CWidgetIcon>
-      </CCol>
-      <CCol col="12" sm="6" lg="4">
-        <CWidgetIcon
-          header="$1.999,50"
-          text="Income"
-          color="gradient-warning"
-          :icon-padding="false"
-        >
-          <CIcon name="cil-moon" class="mx-5 " width="24"/>
-          <template #footer>
-            <CCardFooter class="px-3 py-2">
-              <CLink
-                class="font-weight-bold font-xs text-muted d-flex justify-content-between"
-                href="https://coreui.io/"
-                target="_blank"
+              <td class="td" slot="user" slot-scope="{item}">
+                <div >{{item.AdminType}}</div>
+              </td>
+              <td 
+                slot="taxi booking"
               >
-                View more
-                <CIcon name="cil-arrow-right" width="16"/>
-              </CLink>
-            </CCardFooter>
-          </template>
-        </CWidgetIcon>
+                <input type="checkbox" id="checkbox" value="NOT Allowd" v-model="checked">
+              </td>
+              <td
+                slot="reports"
+              >
+                <input type="checkbox" id="checkbox" v-model="checked">
+              </td>
+              <td
+                slot="settings"
+              >
+                <input type="checkbox" id="checkbox" v-model="checked">
+              </td>
+              <td
+                slot="users"
+              >
+                <input type="checkbox" id="checkbox" v-model="checked">
+              </td>
+              
+              <td
+                slot="attendens / break"
+              >
+                <input type="checkbox" id="checkbox" v-model="checked">
+              </td>
+            </CDataTable>
+          </CCardBody>
+        </CCard>
       </CCol>
     </CRow>
-     <CRow>
-      <CCol col="12" sm="6" lg="4">
-        <CWidgetIcon
-          header="$1.999,50"
-          text="Income"
-          color="gradient-primary"
-          :icon-padding="false"
-          link="#"
-        >
-          <CIcon name="cil-settings" class="mx-5 " width="24"/>
-        </CWidgetIcon>
-      </CCol>
-      <CCol col="12" sm="6" lg="4">
-        <CWidgetIcon
-          header="$1.999,50"
-          text="Income"
-          color="gradient-info"
-          :icon-padding="false"
-          link="#"
-        >
-          <CIcon name="cil-laptop" class="mx-5 " width="24"/>
-        </CWidgetIcon>
-      </CCol>
-      <CCol col="12" sm="6" lg="4">
-        <CWidgetIcon
-          header="$1.999,50"
-          text="Income"
-          color="gradient-warning"
-          :icon-padding="false"
-          link="#"
-        >
-          <CIcon name="cil-moon" class="mx-5" width="24"/>
-        </CWidgetIcon>
-      </CCol>
-    </CRow> 
-    <WidgetsBrand noCharts/>
-    <WidgetsBrand/>
-    <CCardGroup class="mb-4">
-      <CWidgetProgressIcon
-        header="87.500"
-        text="Visitors"
-        color="gradient-info"
-      >
-        <CIcon name="cil-people" height="36"/>
-      </CWidgetProgressIcon>
-      <CWidgetProgressIcon
-        header="385"
-        text="New Clients"
-        color="gradient-success"
-      >
-        <CIcon name="cil-userFollow" height="36"/>
-      </CWidgetProgressIcon>
-      <CWidgetProgressIcon
-        header="1238"
-        text="Products sold"
-        color="gradient-warning"
-      >
-        <CIcon name="cil-basket" height="36"/>
-      </CWidgetProgressIcon>
-      <CWidgetProgressIcon
-        header="28%"
-        text="Returning Visitors"
-      >
-        <CIcon name="cil-chartPie" height="36"/>
-      </CWidgetProgressIcon>
-      <CWidgetProgressIcon
-        header="5:34:11"
-        text="Avg. Time"
-        color="gradient-danger"
-      >
-        <CIcon name="cil-speedometer" height="36"/>
-      </CWidgetProgressIcon>
-    </CCardGroup>
-    <CCardGroup class="mb-4">
-      <CWidgetProgressIcon
-        header="87.500"
-        text="Visitors"
-        color="gradient-info"
-        inverse
-      >
-        <CIcon name="cil-people" height="36"/>
-      </CWidgetProgressIcon>
-      <CWidgetProgressIcon
-        header="385"
-        text="New Clients"
-        color="gradient-success"
-        inverse
-      >
-        <CIcon name="cil-userFollow" height="36"/>
-      </CWidgetProgressIcon>
-      <CWidgetProgressIcon
-        header="1238"
-        text="Products sold"
-        color="gradient-warning"
-        inverse
-      >
-        <CIcon name="cil-basket" height="36"/>
-      </CWidgetProgressIcon>
-      <CWidgetProgressIcon
-        header="28%"
-        text="Returning Visitors"
-        color="gradient-primary"
-        inverse
-      >
-        <CIcon name="cil-chartPie" height="36"/>
-      </CWidgetProgressIcon>
-      <CWidgetProgressIcon
-        header="5:34:11"
-        text="Avg. Time"
-        color="gradient-danger"
-        inverse
-      >
-        <CIcon name="cil-speedometer" height="36"/>
-      </CWidgetProgressIcon>
-    </CCardGroup>
-    <CRow>
-      <CCol sm="6" md="2">
-        <CWidgetProgressIcon
-          header="87.500"
-          text="Visitors"
-          color="gradient-info"
-        >
-          <CIcon name="cil-people" height="36"/>
-        </CWidgetProgressIcon>
-      </CCol>
-      <CCol sm="6" md="2">
-        <CWidgetProgressIcon
-          header="385"
-          text="New Clients"
-          color="gradient-success"
-        >
-          <CIcon name="cil-userFollow" height="36"/>
-        </CWidgetProgressIcon>
-      </CCol>
-      <CCol sm="6" md="2">
-        <CWidgetProgressIcon
-          header="1238"
-          text="Products sold"
-          color="gradient-warning"
-        >
-          <CIcon name="cil-basket" height="36"/>
-        </CWidgetProgressIcon>
-      </CCol>
-      <CCol sm="6" md="2">
-        <CWidgetProgressIcon
-          header="28%"
-          text="Returning Visitors"
-          color="gradient-primary"
-        >
-          <CIcon name="cil-chartPie" height="36"/>
-        </CWidgetProgressIcon>
-      </CCol>
-      <CCol sm="6" md="2">
-        <CWidgetProgressIcon
-          header="5:34:11"
-          text="Avg. Time"
-          color="gradient-danger"
-        >
-          <CIcon name="cil-speedometer" height="36"/>
-        </CWidgetProgressIcon>
-      </CCol>
-      <CCol sm="6" md="2">
-        <CWidgetProgressIcon
-          header="972"
-          text="comments"
-          color="gradient-info"
-        >
-          <CIcon name="cil-speech" height="36"/>
-        </CWidgetProgressIcon>
-      </CCol>
-    </CRow>
-    <CRow>
-      <CCol sm="6" md="2">
-        <CWidgetProgressIcon
-          header="87.500"
-          text="Visitors"
-          color="gradient-info"
-          inverse
-        >
-          <CIcon name="cil-people" height="36"/>
-        </CWidgetProgressIcon>
-      </CCol>
-      <CCol sm="6" md="2">
-        <CWidgetProgressIcon
-          header="385"
-          text="New Clients"
-          color="gradient-success"
-          inverse
-        >
-          <CIcon name="cil-userFollow" height="36"/>
-        </CWidgetProgressIcon>
-      </CCol>
-      <CCol sm="6" md="2">
-        <CWidgetProgressIcon
-          header="1238"
-          text="Products sold"
-          color="gradient-warning"
-          inverse
-        >
-          <CIcon name="cil-basket" height="36"/>
-        </CWidgetProgressIcon>
-      </CCol>
-      <CCol sm="6" md="2">
-        <CWidgetProgressIcon
-          header="28%"
-          text="Returning Visitors"
-          color="gradient-primary"
-          inverse
-        >
-          <CIcon name="cil-chartPie" height="36"/>
-        </CWidgetProgressIcon>
-      </CCol>
-      <CCol sm="6" md="2">
-        <CWidgetProgressIcon
-          header="5:34:11"
-          text="Avg. Time"
-          color="gradient-danger"
-          inverse
-        >
-          <CIcon name="cil-speedometer" height="36"/>
-        </CWidgetProgressIcon>
-      </CCol>
-      <CCol sm="6" md="2">
-        <CWidgetProgressIcon
-          header="972"
-          text="comments"
-          color="gradient-info"
-          inverse
-        >
-          <CIcon name="cil-speech" height="36"/>
-        </CWidgetProgressIcon>
-      </CCol>
-    </CRow>
-    <WidgetsDropdown/>
-    <CRow>
-      <CCol sm="4" lg="2">
-        <CWidgetSimple header="title" text="1,123">
-          <CChartLineSimple style="height:40px" border-color="danger"/>
-        </CWidgetSimple>
-      </CCol>
-      <CCol sm="4" lg="2">
-        <CWidgetSimple header="title" text="1,123">
-          <CChartLineSimple style="height:40px" border-color="primary"/>
-        </CWidgetSimple>
-      </CCol>
-      <CCol sm="4" lg="2">
-        <CWidgetSimple header="title" text="1,123">
-          <CChartLineSimple style="height:40px" border-color="success"/>
-        </CWidgetSimple>
-      </CCol>
-      <CCol sm="4" lg="2">
-        <CWidgetSimple header="title" text="1,123">
-          <CChartBarSimple style="height:40px" background-color="danger"/>
-        </CWidgetSimple>
-      </CCol>
-      <CCol sm="4" lg="2">
-        <CWidgetSimple header="title" text="1,123">
-          <CChartBarSimple style="height:40px" background-color="primary"/>
-        </CWidgetSimple>
-      </CCol>
-      <CCol sm="4" lg="2">
-        <CWidgetSimple header="title" text="1,123">
-          <CChartBarSimple style="height:40px" background-color="success"/>
-        </CWidgetSimple>
-      </CCol>
-    </CRow>
-  </div> -->
+  </div>
 </template>
 
 <script>
-// import WidgetsBrand from './WidgetsBrand'
-// import WidgetsDropdown from './WidgetsDropdown'
-// import { CChartLineSimple, CChartBarSimple } from '../Attendance/index.js'
 
-// export default {
-//   name: 'Widgets',
-//   components: {
-//     CChartLineSimple,
-//     CChartBarSimple,
-//     WidgetsBrand,
-//     WidgetsDropdown
-//   }
-// }
+// import CTableWrapper from '../base/Table.vue'
+export default {
+  name: 'Dashboard',
+    // components: { CTableWrapper },
+
+  data () {
+    return {
+      tableItems: [
+        {
+         AdminType:'Sub Admin',
+
+        },
+        {
+          AdminType:'Super Admin',
+
+        },
+        {
+         AdminType:'Accountent',
+
+        }
+      ],
+      tableFields: [
+        { key: 'AdminType', label: 'Admin Type', _classes: 'text-center' },
+        // { key: 'country', _classes: 'text-center' },
+        { key:'taxi booking'},
+        { key:"reports"},
+        { key:"users"},
+        {key:"settings"},
+        { key:"attendens / break"}
+        // { key: 'usage' },
+        // { key: 'payment', label: 'Payment method', _classes: 'text-center' },
+        // { key: 'activity' },
+      ]
+    }
+  },
+  methods: {
+    function(e) {
+  if (
+    // no bubbling, should always fire.
+    // this is just a safety net in case event.timeStamp is unreliable in
+    // certain weird environments...
+    e.target === e.currentTarget ||
+    // event is fired after handler attachment
+    // bail for environments that have buggy event.timeStamp implementations
+    // #9462 iOS 9 bug: event.timeStamp is 0 after history.pushState
+    // #9681 QtWebEngine event.timeStamp is negative value
+    e.timeStamp <= 0 ||
+    // #9448 bail if event is fired in another document in a multi-page
+    // electron/nw.js app, since event.timeStamp will be using a different
+    // starting reference
+    e.target.ownerDocument !== document
+  ) {
+    return this.checked.apply(this, arguments)
+  }
+},
+    color (value) {
+      let $color
+      if (value <= 25) {
+        $color = 'info'
+      } else if (value > 25 && value <= 50) {
+        $color = 'success'
+      } else if (value > 50 && value <= 75) {
+        $color = 'warning'
+      } else if (value > 75 && value <= 100) {
+        $color = 'danger'
+      }
+      return $color
+    },
+    shuffleArray (array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * (i + 1))
+        let temp = array[i]
+        array[i] = array[j]
+        array[j] = temp
+      }
+      return array
+    },
+
+    getShuffledUsersData () {
+      return this.shuffleArray(usersData.slice(0))
+    }
+  }
+}
 </script>
+<style scoped>
+input[type="checkbox"]:checked {
+    border-color: var(--checkbox-checked-border-color);
+    background-color: var(--checkbox-checked-bgcolor);
+    background-image: url("chrome://global/skin/icons/check.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    -moz-context-properties: fill;
+    fill: currentColor;
+    color: var(--checkbox-checked-color);
+    color-adjust: exact;
+}
+input[type="checkbox"] {
+    -webkit-box-sizing: border-box;
+    box-sizing: revert;
+    padding-inline-end: 4px;
+    margin-right: revert;
+    margin-left: revert;
+    box-sizing: 6%;
+    block-size: fit-content;
+    border-block-end-width: revert;
+}
+/* input[type="checkbox"] {
+    appearance: none;
+    height: 16px;
+    width: 16px;
+    border: 1px solid var(--checkbox-border-color);
+    background-color: var(--checkbox-unchecked-bgcolor);
+    border-radius: 2px;
+    margin-inline: 0 6px;
+    flex-shrink: 0;
+}
+input[type="checkbox"] {
+    margin-block: 2px;
+} */
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid;
+    color: white;
+    background-color: slategrey;
+    border-bottom-color: #d8dbe0;
+}
+.td {
+    vertical-align: middle;
+    font-size: initial;
+    font-family: inherit;
+    font-weight: 700;
+}
+</style>
