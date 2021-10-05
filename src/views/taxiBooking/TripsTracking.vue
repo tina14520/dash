@@ -290,7 +290,7 @@
       </div>
     </CCardBody>
 
-    <CRow>
+    <!-- <CRow>
       <CCol>
         <CCard>
           <CCardBody>
@@ -348,7 +348,7 @@
           </CCardBody>
         </CCard>
       </CCol>
-    </CRow>
+    </CRow> -->
   </div>
 </template>
 
