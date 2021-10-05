@@ -36,45 +36,36 @@ const Admins=()=> import ('@/views/users/Admins')
 
 Vue.use(Router)
 
-export default new Router({
-  mode: 'hash', // https://router.vuejs.org/api/#mode
-  linkActiveClass: 'active',
-  scrollBehavior: () => ({ y: 0 }),
-  routes: configRoutes()
-})
+// export default new Router({
+//   // mode: 'hash', // https://router.vuejs.org/api/#mode
+//   // linkActiveClass: 'active',
+//   // scrollBehavior: () => ({ y: 0 }),
+//   // routes: configRoutes()
+//   mode: 'history',
+//   base: process.env.BASE_URL,
+//   routes: configRoutes()
+// })
 
-function configRoutes () {
-  return [
+// function configRoutes () {
+  const routes = [
+    {
+        path: '/dashboard/login',
+        name: 'Login',
+        component: Login,
+    },
     {
       path: '/',
       redirect: '/dashboard',
       name: 'Home',
       component: TheContainer,
+      meta: {
+        secure: true
+      },
       children: [
         {
           path: 'dashboard',
           name: 'Dashboard',
           component: Dashboard
-        },
-        {
-          path: 'users',
-          redirect: '/users/admins',
-          name: 'Users',
-          component: {
-            render (c) { return c('router-view') }
-          },
-          children: [
-            {
-              path: 'admins',
-              name: 'Admins',
-              component: Admins
-            },
-            {
-              path: 'customers',
-              name: 'Customers',
-              component: Customers
-            },
-          ]
         },
         {
           path: 'attendance&break',
@@ -98,6 +89,9 @@ function configRoutes () {
           component: {
             render (c) { return c('router-view') }
           },
+          meta: {
+            secure: true
+          },
           children: [
             {
               path: 'trip-booking',
@@ -107,17 +101,26 @@ function configRoutes () {
             {
               path: 'current-status',
               name: 'Current Status',
-              component: CurrentStatus
+              component: CurrentStatus,
+              meta: {
+                secure: true
+              },
             },
             {
               path: 'trips-tracking',
               name: 'Trips Tracking',
-              component: TripsTracking
+              component: TripsTracking,
+              meta: {
+                secure: true
+              },
             },
             {
               path: 'follow-up',
               name: 'Follow Up',
-              component: FollowUp
+              component: FollowUp,
+              meta: {
+                secure: true
+              },
             }
           ]
         },
@@ -127,6 +130,9 @@ function configRoutes () {
           name: 'Trips Reports',
           component: {
             render (c) { return c('router-view') }
+          },
+          meta: {
+            secure: true
           },
           children: [
             {
@@ -142,17 +148,26 @@ function configRoutes () {
             {
               path: 'cancelled-trips',
               name: 'Cancelled Trips',
-              component: CancelledTrips
-            },
+              component: CancelledTrips,
+              meta: {
+                secure: true
+              },
+              },
             {
               path: 'financial-reports',
               name: 'Financial Reports',
-              component: FinancialReports
+              component: FinancialReports,
+              meta: {
+                secure: true
+              },
             },
             {
               path: 'top-customers',
               name: 'Top Customers',
-              component: TopCustomers
+              component: TopCustomers,
+              meta: {
+                secure: true
+              },
             },
           ]
         },
@@ -163,16 +178,25 @@ function configRoutes () {
           component: {
             render (c) { return c('router-view') }
           },
+          meta: {
+            secure: true
+          },
           children: [
             {
               path: 'admins',
               name: 'Admins',
-              component: Admins
+              component: Admins,
+              meta: {
+                secure: true
+              },
             },
             {
               path: 'customers',
               name: 'Customers',
-              component: Customers
+              component: Customers,
+              meta: {
+                secure: true
+              },
             },
           ]
         }
@@ -204,5 +228,41 @@ function configRoutes () {
       ]
     }
   ]
-}
+// }
+const router = new Router({
+  mode: 'history',
+  base: process.env.BASE_URL,
+  routes
+})
 
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.secure)) {
+    // this route requires auth, check if logged in
+    // if not, redirect to login page.
+    if (!localStorage.getItem('token')) {
+      next({
+        path: '/dashboard/login',
+        query: {
+          redirect: to.fullPath
+        }
+      })
+    } else {
+      next()
+    }
+  } else if (to.matched.some(record => record.meta.guest)) {
+    if (localStorage.getItem('token')) {
+      next({
+        path: '/dashboard',
+        query: {
+          redirect: to.fullPath
+        }
+      })
+    } else {
+      next()
+    }
+  } else {
+    next() // make sure to always call next()!
+  }
+})
+
+export default router
