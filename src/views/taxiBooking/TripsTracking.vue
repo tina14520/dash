@@ -375,7 +375,7 @@ import axios from "axios";
 const fields = [
   {
     key: "clientName",
-    label: "clientName",
+    label: "client",
     _classes: "font-weight-bold",
   },
   {
