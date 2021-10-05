@@ -143,6 +143,20 @@ input[type="checkbox"] {
     block-size: fit-content;
     border-block-end-width: revert;
 }
+/* input[type="checkbox"] {
+    appearance: none;
+    height: 16px;
+    width: 16px;
+    border: 1px solid var(--checkbox-border-color);
+    background-color: var(--checkbox-unchecked-bgcolor);
+    border-radius: 2px;
+    margin-inline: 0 6px;
+    flex-shrink: 0;
+}
+input[type="checkbox"] {
+    margin-block: 2px;
+} */
+
 .table thead th {
     vertical-align: bottom;
     border-bottom: 2px solid;
