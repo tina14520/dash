@@ -162,14 +162,14 @@
             @click="csvExport(csvData)"
           >
             <!-- <CIcon name="cil-print" /> -->
-            <a
+            <!-- <a
               download="coreui-table-data.csv"
               rel="noonpener"
               href="data:text/csv;charset=utf-8,SEP=,%0ASamppa%20Nori%2C2012%2F01%2F01%2CMember%2CActive%0AEstavan%20Lykos%2C2012%2F02%2F01%2CStaff%2CBanned%0AChetan%20Mohamed%2C2012%2F02%2F01%2CAdmin%2CInactive%0ADerick%20Maximinus%2C2012%2F03%2F01%2CMember%2CPending%0AFriderik%20D%C3%A1vid%2C2012%2F01%2F21%2CStaff%2CActive%0AYiorgos%20Avraamu%2C2012%2F01%2F01%2CMember%2CActive%0AAvram%20Tarasios%2C2012%2F02%2F01%2CStaff%2CBanned%2Ctable-success%0AQuintin%20Ed%2C2012%2F02%2F01%2CAdmin%2CInactive%0AEn%C3%A9as%20Kwadwo%2C2012%2F03%2F01%2CMember%2CPending%0AAgapetus%20Tade%C3%A1%C5%A1%2C2012%2F01%2F21%2CStaff%2CActive%0ACarwyn%20Fachtna%2C2012%2F01%2F01%2CMember%2CActive%2Ctable-success%0ANehemiah%20Tatius%2C2012%2F02%2F01%2CStaff%2CBanned%0AEbbe%20Gemariah%2C2012%2F02%2F01%2CAdmin%2CInactive%0AEustorgios%20Amulius%2C2012%2F03%2F01%2CMember%2CPending%0ALeopold%20G%C3%A1sp%C3%A1r%2C2012%2F01%2F21%2CStaff%2CActive%0APompeius%20Ren%C3%A9%2C2012%2F01%2F01%2CMember%2CActive%0APa%C4%89jo%20Jadon%2C2012%2F02%2F01%2CStaff%2CBanned%0AMicheal%20Mercurius%2C2012%2F02%2F01%2CAdmin%2CInactive%0AGanesha%20Dubhghall%2C2012%2F03%2F01%2CMember%2CPending%0AHiroto%20%C5%A0imun%2C2012%2F01%2F21%2CStaff%2CActive%0AVishnu%20Serghei%2C2012%2F01%2F01%2CMember%2CActive%0AZbyn%C4%9Bk%20Phoibos%2C2012%2F02%2F01%2CStaff%2CBanned%0AEinar%20Randall%2C2012%2F02%2F01%2CAdmin%2CInactive%2Ctable-danger%0AF%C3%A9lix%20Troels%2C2012%2F03%2F21%2CStaff%2CActive%0AAulus%20Agmundr%2C2012%2F01%2F01%2CMember%2CPending"
               targrt="_blank"
-            >
+            > -->
               <CIcon color="white" name="cil-print" />
-            </a>
+            <!-- </a> -->
           </CButton>
         </div>
       </div>
@@ -190,7 +190,20 @@
           pagination
           class="font-weight-bold"
         >
-          <td slot="client" slot-scope="{ trips }">
+        <template #passenger="{item}">
+      <td>
+          {{item.client.name}}
+      </td>
+    </template>
+     <template #driver="{item}">
+      <td>
+         
+         <span v-if="item.driver">{{item.driver.name}}</span>
+        <span v-else class="sp">-</span>
+          
+      </td>
+    </template>
+          <!-- <td slot="client" slot-scope="{ trips }">
             <div>{{ trips.client.name }}</div>
             <div class="small text-muted">
               <span>
@@ -201,7 +214,7 @@
               </span>
               | Registered: {{ item.user.registered }}
             </div>
-          </td>
+          </td> -->
 
           <!-- <tbody v-if="trips">
             <tr v-for="(trip, index) in trips" :key="index">
@@ -353,6 +366,7 @@
 </template>
 
 <script>
+import DataTable from "vue-materialize-datatable";
 import "vue-datepicker-ui/lib/vuedatepickerui.css";
 import VueDatepickerUi from "vue-datepicker-ui";
 import { SweetModal } from "sweet-modal-vue";
@@ -373,16 +387,18 @@ import axios from "axios";
 //   // },
 // ];
 const fields = [
-  {
-    key: "clientName",
-    label: "client",
-    _classes: "font-weight-bold",
-  },
-  {
-    key: "driverName",
-    label: "Driver",
-    _classes: "font-weight-bold",
-  },
+  "passenger",
+  "driver",
+  // {
+  //   key: "name",
+  //   label: "passenger",
+  //   _classes: "font-weight-bold",
+  // },
+  // {
+  //   key: "driverName",
+  //   label: "Driver",
+  //   _classes: "font-weight-bold",
+  // },
   {
     key: "addFrom",
     label: "From",
@@ -415,6 +431,7 @@ export default {
   components: {
     Datepicker: VueDatepickerUi,
     // VueSkeletonLoader,
+    datatable: DataTable,
     SweetModal,
     // SweetModalTab,
   },
@@ -432,7 +449,8 @@ export default {
       isConnected: false,
       socketMessage: "",
       drivers: [],
-      trips: undefined,
+      trips: [],
+      items:[],
       // map: null,
       apiLoading: Boolean,
       apiError: undefined,
@@ -443,24 +461,23 @@ export default {
   },
   computed: {
     computedItems() {
-      return this.trips.map((trip) => {
-        console.log(trip._id);
-        return {
+      return this.trips.map((item) => ({
           ...trip,
-          clientName: trip.client.name,
-          driverName: trip.driver.name,
-        };
-      });
+          name: item.client.name,
+          driverName: item.driver.name,
+      }),
+            console.log("this client")
+)
     },
     csvData() {
       return this.trips.map((item) => ({
         ...item,
-        From: item.address.addfrom,
+        From: item.addfrom,
         To: item.addto,
         Duration: item.duration,
         Price: item.price,
-        Driver: item.driver.name,
-        Passenger: item.client.name,
+        Driver: item.driver,
+        Passenger: item.client,
       }));
     },
     // dateFilteredItems() {
@@ -481,6 +498,23 @@ export default {
         };
       });
     },
+    	print() {
+				const clonedTable = this.$refs.table.cloneNode(true);
+				this.synchronizeCssStyles(this.$refs.table, clonedTable, true);
+				clonedTable.style.maxWidth = '100%';
+				clonedTable.style.boxShadow = '0px 0px 0px 1px rgba(0,0,0,0.2)';
+				clonedTable.style.margin = '8px auto';
+				clonedTable.querySelector('.actions').remove();
+				clonedTable.querySelector('.material-pagination').remove();
+				clonedTable.querySelector('.datatable-length').remove();
+				clonedTable.querySelectorAll('button').forEach(n => n.remove());
+				let win = window.open('', '');
+				win.document.body.style.fontFamily = '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif';
+				win.document.body.innerHTML = (clonedTable.outerHTML);
+				win.print();
+				win.close();
+			},
+
     getCardsInfo() {
       console.log(this.numberOfLiveTrips);
       axios
@@ -741,5 +775,9 @@ export default {
 }
 .h.header {
   display: block;
+}
+.sp{
+  display: flex;
+  justify-content:center;
 }
 </style>

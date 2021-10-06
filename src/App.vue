@@ -11,4 +11,5 @@ export default {
 <style lang="scss">
   // Import Main styles for this application
   @import 'assets/scss/style';
+  @import url(http://fonts.googleapis.com/icon?family=Material+Icons);
 </style>

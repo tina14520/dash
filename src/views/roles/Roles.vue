@@ -18,33 +18,59 @@
               <td 
                 slot="taxi booking"
               >
-                <input type="checkbox" id="checkbox" value="NOT Allowd" v-model="checked">
-              </td>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <!-- <label class="form-check-label" for="flexCheckDefault">
+                      Default checkbox
+                    </label> -->
+                </div>              </td>
               <td
                 slot="reports"
               >
-                <input type="checkbox" id="checkbox" v-model="checked">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <!-- <label class="form-check-label" for="flexCheckDefault">
+                      Default checkbox
+                    </label> -->
+                </div>
               </td>
               <td
                 slot="settings"
               >
-                <input type="checkbox" id="checkbox" v-model="checked">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <!-- <label class="form-check-label" for="flexCheckDefault">
+                      Default checkbox
+                    </label> -->
+                </div>
               </td>
               <td
                 slot="users"
               >
-                <input type="checkbox" id="checkbox" v-model="checked">
+               <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <!-- <label class="form-check-label" for="flexCheckDefault">
+                      Default checkbox
+                    </label> -->
+                </div>
               </td>
               
               <td
                 slot="attendens / break"
               >
-                <input type="checkbox" id="checkbox" v-model="checked">
+               <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <!-- <label class="form-check-label" for="flexCheckDefault">
+                      Default checkbox
+                    </label> -->
+                </div>
               </td>
               <td
                 slot="roles"
               >
-                <input type="checkbox" id="checkbox" v-model="checked">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                </div>
               </td>
             </CDataTable>
           </CCardBody>
