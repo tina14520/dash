@@ -54,3 +54,23 @@
 margin: 0 0 0 0;
 padding:0;
 }
+.nav-pills .nav-link.active .nav-pills .show  .nav-link {
+  color: #fff;
+  background-color: #3C4B64;
+  margin: 0rem;
+  padding: 1rem;
+}
+.nav-link {
+  text-decoration: none;
+  background-color: transparent;
+  color: black;
+}
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #3C4B64;
+}
+.e-checkbox-wrapper .e-frame.e-check, .e-css.e-checkbox-wrapper .e-frame.e-check {
+  background-color: #e3e016;
+  border-color: transparent;
+  color: #fff;
+}

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <CCardBody>
+   
       <sweet-modal ref="mapModal" title="Trip path">
         <div id="map" ref="map"></div>
       </sweet-modal>
@@ -95,84 +95,8 @@
           </div>
         </div>
       </sweet-modal>
-    </CCardBody>
-    <CRow>
-      <CCol sm="2" md="2">
-        <CWidgetProgressIcon
-          text="Number of live trips "
-          color="gradient-info"
-          inverse
-        >
-          <CIcon name="cil-location-pin" height="36" />
-          <h4 class="header">{{ this.numberOfLiveTrips }}</h4>
-        </CWidgetProgressIcon>
-      </CCol>
-      <CCol sm="2" md="2">
-        <CWidgetProgressIcon
-          text="Number of completed trips (per Day)"
-          color="gradient-success"
-          inverse
-        >
-          <CIcon name="cil-task" height="36" />
-          <h4 class="header">{{ this.numberOfCompletedTrips }}</h4>
-        </CWidgetProgressIcon>
-      </CCol>
-      <CCol sm="2" md="2">
-        <CWidgetProgressIcon
-          text="Number of cancelled trips"
-          color="gradient-danger"
-          inverse
-        >
-          <CIcon name="cil-ban" height="36" />
-          <h4 class="header">{{ this.numberOfCancelledTrips }}</h4>
-        </CWidgetProgressIcon>
-      </CCol>
-      <CCol sm="2" md="2">
-        <CWidgetProgressIcon
-          text="Number of trips cost (per Day)"
-          color="gradient-primary"
-          inverse
-        >
-          <CIcon name="cil-cash" height="36" />
-          <h4 class=" h header">{{ this.numberOfTripsCost }}$</h4>
-        </CWidgetProgressIcon>
-      </CCol>
-      <CCol sm="2" md="2">
-        <CWidgetProgressIcon
-          text="Number of free vehicles"
-          color="gradient-warning"
-          inverse
-        >
-          <CIcon name="cil-group" height="36" />
-          <h4 class="header">{{ this.numberOfOnlineDrivers }}</h4>
-        </CWidgetProgressIcon>
-      </CCol>
-    </CRow>
+    
     <CCardBody class="tab">
-      <div class="cdiv">
-        <div class="col-sm-6 form-inline p-0">
-          <Datepicker :range="true" lang="en" firstDayOfWeek="sunday" />
-        </div>
-        <div class="cd col-sm-6 form-inline p-0">
-          <CButton
-            class="btn d-sm-down-none btn-success"
-            variant="outline"
-            square
-            size="sm"
-            @click="csvExport(csvData)"
-          >
-            <!-- <CIcon name="cil-print" /> -->
-            <!-- <a
-              download="coreui-table-data.csv"
-              rel="noonpener"
-              href="data:text/csv;charset=utf-8,SEP=,%0ASamppa%20Nori%2C2012%2F01%2F01%2CMember%2CActive%0AEstavan%20Lykos%2C2012%2F02%2F01%2CStaff%2CBanned%0AChetan%20Mohamed%2C2012%2F02%2F01%2CAdmin%2CInactive%0ADerick%20Maximinus%2C2012%2F03%2F01%2CMember%2CPending%0AFriderik%20D%C3%A1vid%2C2012%2F01%2F21%2CStaff%2CActive%0AYiorgos%20Avraamu%2C2012%2F01%2F01%2CMember%2CActive%0AAvram%20Tarasios%2C2012%2F02%2F01%2CStaff%2CBanned%2Ctable-success%0AQuintin%20Ed%2C2012%2F02%2F01%2CAdmin%2CInactive%0AEn%C3%A9as%20Kwadwo%2C2012%2F03%2F01%2CMember%2CPending%0AAgapetus%20Tade%C3%A1%C5%A1%2C2012%2F01%2F21%2CStaff%2CActive%0ACarwyn%20Fachtna%2C2012%2F01%2F01%2CMember%2CActive%2Ctable-success%0ANehemiah%20Tatius%2C2012%2F02%2F01%2CStaff%2CBanned%0AEbbe%20Gemariah%2C2012%2F02%2F01%2CAdmin%2CInactive%0AEustorgios%20Amulius%2C2012%2F03%2F01%2CMember%2CPending%0ALeopold%20G%C3%A1sp%C3%A1r%2C2012%2F01%2F21%2CStaff%2CActive%0APompeius%20Ren%C3%A9%2C2012%2F01%2F01%2CMember%2CActive%0APa%C4%89jo%20Jadon%2C2012%2F02%2F01%2CStaff%2CBanned%0AMicheal%20Mercurius%2C2012%2F02%2F01%2CAdmin%2CInactive%0AGanesha%20Dubhghall%2C2012%2F03%2F01%2CMember%2CPending%0AHiroto%20%C5%A0imun%2C2012%2F01%2F21%2CStaff%2CActive%0AVishnu%20Serghei%2C2012%2F01%2F01%2CMember%2CActive%0AZbyn%C4%9Bk%20Phoibos%2C2012%2F02%2F01%2CStaff%2CBanned%0AEinar%20Randall%2C2012%2F02%2F01%2CAdmin%2CInactive%2Ctable-danger%0AF%C3%A9lix%20Troels%2C2012%2F03%2F21%2CStaff%2CActive%0AAulus%20Agmundr%2C2012%2F01%2F01%2CMember%2CPending"
-              targrt="_blank"
-            > -->
-              <CIcon color="white" name="cil-print" />
-            <!-- </a> -->
-          </CButton>
-        </div>
-      </div>
       <div class="u" v-if="trips">
         <CDataTable
           :items="trips"
@@ -203,73 +127,8 @@
           
       </td>
     </template>
-          <!-- <td slot="client" slot-scope="{ trips }">
-            <div>{{ trips.client.name }}</div>
-            <div class="small text-muted">
-              <span>
-                <template v-if="trips.client.name">{{
-                  trips.client.name
-                }}</template>
-                <template v-else>-</template>
-              </span>
-              | Registered: {{ item.user.registered }}
-            </div>
-          </td> -->
-
-          <!-- <tbody v-if="trips">
-            <tr v-for="(trip, index) in trips" :key="index">
-              <td v-if="trip.client">{{ trip.client.name }}</td>
-              <td v-if="!trip.client">-</td>
-              <td v-if="trip.driver">{{ trip.driver.name }}</td>
-              <td v-if="!trip.driver">-</td>
-
-              <td>{{ trip.addFrom }}</td>
-              <td>{{ trip.addTo }}</td>
-
-              <td>{{ trip.duration }}</td>
-              <td>{{ trip.price }}</td>
-              <td>{{ trip.createdAt }}</td>
-
-              <td>
-                <div class="table-icons">
-                  <div
-                    class="map-icon table-icon"
-                    @click="showMapModal(trip)"
-                    content="Show trip path"
-                    v-tippy="{ placement: 'left' }"
-                  >
-                    <unicon
-                      name="map"
-                      fill="#717171"
-                      class="side-icon"
-                    ></unicon>
-                  </div>
-
-                  <div
-                    class="info-icon table-icon"
-                    @click="showInfoModal(trip)"
-                    content="Show more details"
-                    v-tippy="{ placement: 'left' }"
-                  >
-                    <unicon
-                      name="info-circle"
-                      fill="#717171"
-                      class="side-icon"
-                    ></unicon>
-                  </div>
-                </div>
-              </td>
-            </tr>
-          </tbody> -->
-
-          <!-- <template #status="{ item }">
-          <td>
-            <CSwitch class="mx-1" color="success" data-checked="On" data-unchecked="Off"
-              :checked="item.status == 1 ? true : false" variant="3d" />
-          </td>
-        </template> -->
-          <template #show_details="{ item, index }">
-            <td class="py-2">
+      <template #show_details="{ item, index }">
+        <td class="py-2">
               <CButton
                 color="primary"
                 variant="outline"
@@ -302,66 +161,6 @@
         </CDataTable>
       </div>
     </CCardBody>
-
-    <!-- <CRow>
-      <CCol>
-        <CCard>
-          <CCardBody>
-            <CDataTable
-              class="mb-0 table-outline"
-              hover
-              head-color="light"
-              no-sorting
-            >
-              <td slot="avatar" class="text-center" slot-scope="{ item }">
-                <div class="c-avatar">
-                  <img :src="item.avatar.url" class="c-avatar-img" alt="" />
-                  <span
-                    class="c-avatar-status"
-                    :class="`bg-${item.avatar.status || 'secondary'}`"
-                  ></span>
-                </div>
-              </td>
-              <td slot="user" slot-scope="{ item }">
-                <div>{{ item.user.name }}</div>
-                <div class="small text-muted">
-                  <span>
-                    <template v-if="item.user.new">New</template>
-                    <template v-else>Recurring</template>
-                  </span>
-                  | Registered: {{ item.user.registered }}
-                </div>
-              </td>
-              <td slot="country" slot-scope="{ item }" class="text-center">
-                <CIcon :name="item.country.flag" height="25" />
-              </td>
-              <td slot="usage" slot-scope="{ item }">
-                <div class="clearfix">
-                  <div class="float-left">
-                    <strong>{{ item.usage.value }}%</strong>
-                  </div>
-                  <div class="float-right">
-                    <small class="text-muted">{{ item.usage.period }}</small>
-                  </div>
-                </div>
-                <CProgress
-                  class="progress-xs"
-                  v-model="item.usage.value"
-                  :color="color(item.usage.value)"
-                />
-              </td>
-              <td slot="payment" slot-scope="{ item }" class="text-center">
-                <CIcon :name="item.payment.icon" height="25" />
-              </td>
-              <td slot="activity" slot-scope="{ item }">
-                <div class="small text-muted">Last login</div>
-                <strong>{{ item.activity }}</strong>
-              </td>
-            </CDataTable>
-          </CCardBody>
-        </CCard>
-      </CCol>
-    </CRow> -->
   </div>
 </template>
 
@@ -371,34 +170,9 @@ import "vue-datepicker-ui/lib/vuedatepickerui.css";
 import VueDatepickerUi from "vue-datepicker-ui";
 import { SweetModal } from "sweet-modal-vue";
 import axios from "axios";
-// import VueSkeletonLoader from "skeleton-loader-vue";
-//   const fields = [
-//   "passenger",
-//   "driver",
-//   "from",
-//   "to",
-//   "duration",
-//   // {
-//   //   key: "edit_roles",
-//   //   label: "",
-//   //   _style: "width:1%",
-//   //   sorter: false,
-//   //   filter: false,
-//   // },
-// ];
 const fields = [
   "passenger",
   "driver",
-  // {
-  //   key: "name",
-  //   label: "passenger",
-  //   _classes: "font-weight-bold",
-  // },
-  // {
-  //   key: "driverName",
-  //   label: "Driver",
-  //   _classes: "font-weight-bold",
-  // },
   {
     key: "addFrom",
     label: "From",
