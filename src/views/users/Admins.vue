@@ -52,9 +52,21 @@
           type="checkbox"
           label="Roles"
         />
-        <button type="submit" class="add-submit" :disabled="loadingAdd">
+        <CButton type="submit" class="add-submit" :disabled="loadingAdd">
           Add admin
-        </button>
+        </CButton>
+          <div class="validation-errors">
+          <div class="validation-error" v-for="err in validationErrors" :key="err.param">
+            {{ err.msg }}
+          </div>
+        </div>
+       <!-- <FormulateInput
+          class="submitbtn"
+          type="submit"
+          label="Add"
+          @click="addAdmin()"
+          :disabled="loadingAdd"
+        />-->
       </FormulateForm>
     </sweet-modal>
 
@@ -137,7 +149,7 @@
                 {{ item.username }}
               </h4>
               <p class="text-muted">User since: {{ item.registered }}</p>
-              <CButton size="sm" color="info" class="">
+              <CButton size="sm" color="primary" class="">
                 User Settings
               </CButton>
               <CButton size="sm" color="danger" class="ml-1">
@@ -181,6 +193,17 @@ export default {
   name: "AdvancedTables",
   data() {
     return {
+       reqError: undefined,
+      loading: false,
+      rowElments: {},
+      formValues: {},
+      index: 1,
+      isLoading: false,
+      validationErrors: [],
+      rows: [],
+      settingName: undefined,
+      settingValue: undefined,
+      id: undefined,
       items: items.map((item, id) => {
         return { ...item, id };
       }),
@@ -217,6 +240,12 @@ export default {
     // },
   },
   methods: {
+    unsuccess() {
+      this.$refs.unsuccessModal.open();
+    },
+    success() {
+      this.$refs.successModal.open();
+    },
     showModalAddAdmin() {
       this.$refs.modalAddAdmin.open();
     },
@@ -253,8 +282,10 @@ export default {
         .catch((err) => {
           this.loadingAdd = false;
           console.log("Error");
+          this.validationErrors = err.response.data.errors;
           if (err.response.status == 400) {
             this.vErr = err.response.data.message;
+            this.validationErrors = err.response.data.errors;
           }
           console.log(err.response);
         });
@@ -410,6 +441,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+s
 .toggle-icon {
   cursor: pointer;
 }
@@ -431,5 +463,50 @@ export default {
 .admins-table {
   background: white;
   padding: 1rem;
+}
+.buttons {
+  white-space: nowrap;
+}
+.back {
+  margin-right: 10rem;
+  display: inline-block;
+  justify-content: flex-end;
+}
+.submit-btn {
+  display: inline-block;
+  justify-content: flex-end;
+}
+.submitbtn {
+  display: flex;
+  justify-content: flex-end;
+}
+.salah {
+  border: none;
+  background-color: red;
+  padding: 0.4rem 0.8rem;
+  color: white;
+  border-radius: 0.3rem;
+}
+.add {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin: 1rem 0;
+  button {
+    border: none;
+    background-color: rebeccapurple;
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 0.2rem;
+    &:hover {
+      background-color: rgb(35, 4, 66);
+    }
+  }
+}
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8rem;
 }
 </style>
