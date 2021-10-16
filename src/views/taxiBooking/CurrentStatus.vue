@@ -94,8 +94,12 @@
         </div>
       </div>
     </sweet-modal>
+    <div class="tab">
+    
+    <CCard>
+    <br>
     <CRow>
-      <CCol sm="2" md="2">
+      <CCol class="colm" sm="2" md="2">
         <CWidgetProgressIcon text="Number of live trips " color="gradient-info" inverse>
           <CIcon name="cil-location-pin" height="36" />
           <h4 class="header">{{ this.numberOfLiveTrips }}</h4>
@@ -114,9 +118,9 @@
         </CWidgetProgressIcon>
       </CCol>
       <CCol sm="2" md="2">
-        <CWidgetProgressIcon text="Number of trips cost (per Day)" color="gradient-primary" inverse>
+        <CWidgetProgressIcon  text="Number of trips cost (per Day)" color="gradient-primary" inverse>
           <CIcon name="cil-cash" height="36" />
-          <h4 class=" h header">{{ this.numberOfTripsCost }}$</h4>
+          <h4 class=" h header">{{ this.numberOfTripsCost }} SDG</h4>
         </CWidgetProgressIcon>
       </CCol>
       <CCol sm="2" md="2">
@@ -126,6 +130,8 @@
         </CWidgetProgressIcon>
       </CCol>
     </CRow>
+    </CCard>
+    </div>
     <CCardBody class="tab">
       <div class="cdiv">
         <div class="col-sm-6 form-inline p-0">
@@ -138,7 +144,13 @@
           </CButton>
         </div>
       </div>
+       <div class="row">
+                 <div class="search-wrapper panel-heading col-sm-12">
+                     <input class="form-control" type="text" v-model="searchQuery" placeholder="Search" />
+                </div>                        
+            </div>
       <div class="u" v-if="trips">
+              
         <CDataTable :items="trips" :fields="fields" column-filter table-filter items-per-page-select :items-per-page="5"
           striped border small fixed hover sorter pagination class="font-weight-bold">
           <template #passenger="{item}">
@@ -496,10 +508,20 @@
         infoModalTrip: undefined,
         searchById: "",
         searchByName: "",
-        toggle:false
+        toggle:false,
+        searchQuery: null,
       };
     },
     computed: {
+       resultQuery(){
+      if(this.searchQuery){
+      return this.resources.filter((item)=>{
+        return this.searchQuery.toLowerCase().split(' ').every(v => item.title.toLowerCase().includes(v))
+      })
+      }else{
+        return this.resources;
+      }
+    },
       computedItems() {
         return this.trips.map((item) => ({
             ...trip,
@@ -828,4 +850,8 @@
     display: flex;
     justify-content: center;
   }
+  .colm{
+    margin-left: 1rem;
+  }
 </style>
+
