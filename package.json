@@ -45,6 +45,7 @@
     "socket.io-client": "2.3.0",
     "sweet-modal-vue": "^2.0.0",
     "vue": "~2.6.12",
+    "vue-class-component": "^8.0.0-rc.1",
     "vue-datepicker-ui": "^2.2.0",
     "vue-good-table": "^2.21.11",
     "vue-loading-spinner": "^1.0.11",

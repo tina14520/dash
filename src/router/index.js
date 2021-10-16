@@ -16,6 +16,7 @@ const TripBooking = () => import('@/views/taxiBooking/TripBooking')
 const CurrentStatus = () => import('@/views/taxiBooking/CurrentStatus')
 const TripsTracking = () => import('@/views/taxiBooking/TripsTracking')
 const FollowUp = () => import('@/views/taxiBooking/FollowUp')
+const Book = () => import('@/views/taxiBooking/PickUpMap')
 
 
 // Views - Reports
@@ -68,6 +69,11 @@ Vue.use(Router)
           component: Dashboard
         },
         {
+          path: 'book',
+          name: 'Book',
+          component: Book
+        },
+        {
           path: 'attendance&break',
           name: 'Attendance & Break',
           component: Attendance
@@ -96,7 +102,7 @@ Vue.use(Router)
             {
               path: 'trip-booking',
               name: 'Trip Booking',
-              component: TripBooking
+              component: Book
             },
             {
               path: 'current-status',

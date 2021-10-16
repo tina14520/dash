@@ -2,7 +2,7 @@
   <section class="trips">
     <!-- Modals -->
     <sweet-modal ref="mapModal" title="Trip path">
-      <google id="map" ref="map"></google>
+      <div id="map" ref="map"></div>
     </sweet-modal>
 
     <sweet-modal ref="infoModal" title="Details">
