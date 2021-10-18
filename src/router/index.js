@@ -179,7 +179,7 @@ Vue.use(Router)
         },
         {
           path: 'users',
-          redirect: '/users',
+          redirect: '/users/admins',
           name: 'Users',
           component: {
             render (c) { return c('router-view') }

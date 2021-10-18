@@ -1,6 +1,90 @@
 <template>
-  <CCardBody>
-    <sweet-modal icon="success" ref="success">
+  <div>
+    <div class="add-container">
+      <CButton
+        key="text"
+        color="primary"
+        size="sm"
+        class="m-2"
+        @click="showModalAddAdmin"
+      >
+        Add Admin
+        <CIcon name="cil-plus"/>
+      </CButton>
+    </div>
+
+    <CDataTable
+      :items="admins"
+      :fields="fields"
+      :table-filter="{ placeholder: 'search...' }"
+      items-per-page-select
+      :items-per-page="5"
+      hover
+      sorter
+      pagination
+      column-filter  striped border small fixed  class="font-weight-bold"
+      
+    >
+      <!-- column-filter -->
+      <template #status="{item}">
+        <td>
+          <CIcon
+            name="cil-toggle-on"
+            v-if="item.disabled == false"
+            @click="disableAdmin(item._id)"
+            class="on"
+            height=30
+          ></CIcon>
+          <CIcon
+            name="cil-toggle-off"
+            v-if="item.disabled == true"
+            class="off"
+            height=30
+            @click="enableAdmin(item._id)"
+          ></CIcon>
+        </td>
+      </template>
+      <template #edit_roles="{item, index}">
+        <td class="py-2">
+            <div
+                    class="map-icon table-icon"
+                    @click="showModalRoles(item, index)"
+                    content="Edit Admin"
+                    v-tippy="{ placement: 'left' }"
+                  >
+                  <CIcon name="cil-pencil" class="on" height=20 />
+            </div>
+        </td>
+        <td> <div
+                    class="table-icon"
+                    @click="showModalRoles(item, index)"
+                    content="Delete Admin"
+                    v-tippy="{ placement: 'left' }"
+                  >
+                  <CIcon name="cil-trash" class="off" height=20 />
+                  </div></td>
+      </template>
+      <template #details="{item}">
+        <CCollapse :show="Boolean(item._toggled)" :duration="collapseDuration">
+          <CCardBody>
+            <CMedia :aside-image-props="{ height: 102 }">
+              <h4>
+                {{ item.username }}
+              </h4>
+              <p class="text-muted">User since: {{ item.registered }}</p>
+              <CButton size="sm" color="primary" class="">
+                User Settings
+              </CButton>
+              <CButton size="sm" color="danger" class="ml-1">
+                Delete
+              </CButton>
+            </CMedia>
+          </CCardBody>
+        </CCollapse>
+      </template>
+    </CDataTable>
+    <div>
+        <sweet-modal icon="success" ref="success">
       Admin added successfully
     </sweet-modal>
     <sweet-modal  ref="modalRoles">
@@ -53,13 +137,13 @@
           label="Roles"
         />
         <CButton type="submit" class="add-submit" :disabled="loadingAdd">
-          Add admin
+          Add Admin
         </CButton>
           <div class="validation-errors">
           <div class="validation-error" v-for="err in validationErrors" :key="err.param">
             {{ err.msg }}
           </div>
-        </div>
+          </div>
        <!-- <FormulateInput
           class="submitbtn"
           type="submit"
@@ -67,100 +151,10 @@
           @click="addAdmin()"
           :disabled="loadingAdd"
         />-->
-      </FormulateForm>
-    </sweet-modal>
-
-    <div class="add-container">
-      <CButton
-        key="text"
-        color="info"
-        size="sm"
-        class="m-2"
-        @click="showModalAddAdmin"
-      >
-        Add admin
-      </CButton>
+        </FormulateForm>
+      </sweet-modal>
     </div>
-
-    <CDataTable
-      :items="admins"
-      :fields="fields"
-      :table-filter="{ placeholder: 'search...' }"
-      items-per-page-select
-      :items-per-page="5"
-      hover
-      sorter
-      pagination
-      class="admins-table"
-    >
-      <!-- column-filter -->
-      <template #status="{item}">
-        <td>
-          <!-- <CSwitch
-            class="mx-1"
-            color="primary"
-            data-checked="On"
-            data-unchecked="Off"
-            :checked="item.disabled == true ? false : true"
-            variant="3d"
-            @click="toggleDisabled()"
-          /> -->
-          <unicon
-            name="toggle-on"
-            fill="#2d6a4f"
-            v-if="item.disabled == false"
-            class="toggle-icon"
-            @click="disableAdmin(item._id)"
-          ></unicon>
-          <unicon
-            name="toggle-off"
-            fill="#f94144"
-            v-if="item.disabled == true"
-            class="toggle-icon"
-            @click="enableAdmin(item._id)"
-          ></unicon>
-        </td>
-      </template>
-
-      <template>
-        <CButton color="primary" variant="outline" square size="sm">
-        Edit Roles
-      </CButton>
-      </template>
-      
-      <template #edit_roles="{item, index}">
-        <td class="py-2">
-          <CButton
-            color="primary"
-            variant="outline"
-            square
-            size="sm"
-            @click="showModalRoles(item, index)"
-          >
-            Roles
-          </CButton>
-        </td>
-      </template>
-      <template #details="{item}">
-        <CCollapse :show="Boolean(item._toggled)" :duration="collapseDuration">
-          <CCardBody>
-            <CMedia :aside-image-props="{ height: 102 }">
-              <h4>
-                {{ item.username }}
-              </h4>
-              <p class="text-muted">User since: {{ item.registered }}</p>
-              <CButton size="sm" color="primary" class="">
-                User Settings
-              </CButton>
-              <CButton size="sm" color="danger" class="ml-1">
-                Delete
-              </CButton>
-            </CMedia>
-          </CCardBody>
-        </CCollapse>
-      </template>
-    </CDataTable>
-  </CCardBody>
+  </div>
 </template>
 
 <script>
@@ -441,7 +435,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-s
+
 .toggle-icon {
   cursor: pointer;
 }
@@ -508,5 +502,15 @@ s
   align-items: center;
   justify-content: center;
   margin-top: 8rem;
+}
+.on{
+  color:rgb(5, 165, 5)
+}
+.off{
+  color:red
+}
+.validation-error{
+  background-color: rgb(250, 70, 70);
+  color:white
 }
 </style>
