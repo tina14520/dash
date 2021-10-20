@@ -28,20 +28,23 @@
       <!-- column-filter -->
       <template #status="{item}">
         <td>
-          <CIcon
+          <div @click="disableAdmin(item._id)" >
+            <CIcon
             name="cil-toggle-on"
             v-if="item.disabled == false"
-            @click="disableAdmin(item._id)"
             class="on"
             height=30
-          ></CIcon>
-          <CIcon
-            name="cil-toggle-off"
-            v-if="item.disabled == true"
-            class="off"
-            height=30
-            @click="enableAdmin(item._id)"
-          ></CIcon>
+            ></CIcon>
+          </div>
+          <div  @click="enableAdmin(item._id)">
+            <CIcon
+              name="cil-toggle-off"
+              v-if="item.disabled == true"
+              class="off"
+              height=30
+            
+            ></CIcon>
+          </div>
         </td>
       </template>
       <template #edit_roles="{item, index}">
@@ -55,14 +58,16 @@
                   <CIcon name="cil-pencil" class="on" height=20 />
             </div>
         </td>
-        <td> <div
-                    class="table-icon"
-                    @click="showModalRoles(item, index)"
-                    content="Delete Admin"
-                    v-tippy="{ placement: 'left' }"
-                  >
-                  <CIcon name="cil-trash" class="off" height=20 />
-                  </div></td>
+        <td class="py-2"> 
+            <div
+               class="table-icon"
+                @click="showModalRoles(item, index)"
+                content="Delete Admin"
+                v-tippy="{ placement: 'left' }"
+            >
+              <CIcon name="cil-trash" class="off" height=20 />
+            </div>
+        </td>
       </template>
       <template #details="{item}">
         <CCollapse :show="Boolean(item._toggled)" :duration="collapseDuration">
@@ -214,7 +219,7 @@ export default {
       loadingAdd: false,
       vErr: undefined,
       apiError: undefined,
-      apiBase: "https://api-alsayar.herokuapp.com",
+      apiBase: "https://alsayar-backend-vwmk7.ondigitalocean.app",
       editAdminId: undefined,
     };
   },

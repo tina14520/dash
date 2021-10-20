@@ -91,7 +91,9 @@ import {
   cilPlus,
   cilToggleOff,
   cilToggleOn,
-  cilTrash
+  cilTrash,
+  cilCheckAlt,
+  cilX  
 
 } from '@coreui/icons'
 import { logo } from './logo'
@@ -158,8 +160,9 @@ export const iconsSet = Object.assign(
     cilPlus,
     cilToggleOff,
     cilToggleOn,
-    cilTrash
-  
+    cilTrash,
+    cilCheckAlt,
+    cilX  
   },
   {
     cifUs,

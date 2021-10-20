@@ -151,19 +151,14 @@
             <div class="u" v-if="trips">
 
                   <CDataTable :items="trips" :fields="fields" column-filter table-filter items-per-page-select :items-per-page="5" striped border small fixed hover sorter pagination class="font-weight-bold">
-                        <template #passenger="{item}">
-                              <td>
+                        
+                        <td slot="passenger" slot-scope="{ item }">
                                     {{item.client.name}}
-                              </td>
-                        </template>
-                        <template #driver="{item}">
-                              <td>
-
-                                    <span v-if="item.driver">{{item.driver.name}}</span>
-                                    <span v-else class="sp">-</span>
-
-                              </td>
-                        </template>
+                        </td>
+                        <td slot="driver" slot-scope="{ item }">
+                              <span v-if="item.driver">{{item.driver.name}}</span>
+                              <span v-else class="sp">-</span>
+                        </td>
                         <!-- <template #details="{item}">
       <td>
           {{item.client.name}}
